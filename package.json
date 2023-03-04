@@ -2,7 +2,7 @@
   "name": "target-sql-scrape",
   "version": "1.0.0",
   "description": "Target.com sql scraper for bluedog",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Hcaziah/target-sql-scrape/issues"
   },
-  "homepage": "https://github.com/Hcaziah/target-sql-scrape#readme"
+  "homepage": "https://github.com/Hcaziah/target-sql-scrape#readme",
+  "dependencies": {
+    "pg": "^8.9.0",
+    "puppeteer": "^19.7.2"
+  }
 }
