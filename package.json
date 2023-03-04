@@ -1,0 +1,19 @@
+{
+  "name": "target-sql-scrape",
+  "version": "1.0.0",
+  "description": "Target.com sql scraper for bluedog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hcaziah/target-sql-scrape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hcaziah/target-sql-scrape/issues"
+  },
+  "homepage": "https://github.com/Hcaziah/target-sql-scrape#readme"
+}
