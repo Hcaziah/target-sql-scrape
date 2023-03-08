@@ -1,0 +1,47 @@
+http://redsky.target.com/redsky_aggregations/v1/web/plp_search_v2?key=9f36aeafbe60771e321a7cc95a78140772ab3e96&category=5xt1n&channel=WEB&count=24&default_purchasability_filter=true&offset=0&page=%2Fc%2F5xt0b&platform=desktop&pricing_store_id=3278&scheduled_delivery_store_id=3278&store_ids=3278%2C365%2C361%2C616%2C673&visitor_id=12343336896&zip=48823
+
+
+json tags wanted
+{
+    item - {
+        enrichment - {
+            buy_url - string
+            images - {
+                primary_image_url - string
+                alternative_image_urls - list of strings
+            }
+        }
+        dpci - string
+        product_description - {
+            title - string
+            bullet_descriptions - list of strings
+            soft_bullets {notes.txt
+                bullets - list of strings
+            }
+        }
+    }
+    price - {
+        formatted_current_price - string
+        location_id - int
+    }
+    ratings_and_reviews {
+        statistics {
+            rating {
+                average - int
+                count - int
+            }
+        }
+    }
+}
+
+buy_url = obj.item.enrichment.buy_url
+images = [obj.item.enrichment.images.primary_image_url, ...obj.item.enrichment.images.alternative_image_urls]
+dpci = obj.item.dpci
+title = obj.item.product_description.title
+bullet_descriptors = [...obj.item.product_description.bullet_descriptions]
+item_categories = [...obj.item.product_description.soft_bullets.bullets]
+price = obj.price.formatted_current_price;
+ratings_count = obj.ratings_and_reviews.statistics.rating.count
+ratings =  obj.ratings_and_reviews.statistics.rating.average
+location = obj.price.location_id;  
+location = obj.price.location_id;

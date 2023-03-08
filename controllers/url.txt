@@ -1,0 +1,6 @@
+Request URL: https://redsky.target.com/redsky_aggregations/v1/web/plp_search_v2?key=9f36aeafbe60771e321a7cc95a78140772ab3e96&category=5xt0b&channel=WEB&count=27&default_purchasability_filter=true&offset=0&page=%2Fc%2F5xt0b&platform=desktop&pricing_store_id=3278&scheduled_delivery_store_id=3278&store_ids=3278%2C365%2C361%2C616%2C673&visitor_id=0&zip=48824
+
+
+
+
+https://redsky.target.com/redsky_aggregations/v1/web/plp_search_v2?key=9f36aeafbe60771e321a7cc95a78140772ab3e96&category=5xt1n&channel=WEB&count=24&default_purchasability_filter=true&offset=1&page=%2Fc%2F5xt0b&platform=desktop&pricing_store_id=3278&scheduled_delivery_store_id=3278&store_ids=3278%2C365%2C361%2C616%2C673&visitor_id=0&zip=48824
