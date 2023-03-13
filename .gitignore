@@ -1,4 +1,6 @@
-*.txt
+# Text files
+notes.txt
+url.txt
 
 # Logs
 logs
