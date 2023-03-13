@@ -1,36 +1,29 @@
-const { Client }  = require("pg");
+const Connection = require('tedious').Connection;
+const config = require('../../privatestuff/config');
+
 const TargetScraper = require("./TargetScraper");
-const { v4: uuidv4 } = require('uuid');
 
 
 module.exports = class StoreDBController {
     constructor() {
         this.isConnected = false;
     };
+  
     
     async setupCategoriesTable() {
-        const client = new Client(process.env.DATABASE_URL);
-        await client.connect();
+
+        client.connect();
         this.isConnected = true;
 
-        await client.query(`
+        client.query(`
             CREATE TABLE IF NOT EXISTS categories (
                 ID INT NOT NULL PRIMARY KEY,
                 lastupdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 category VARCHAR(40) NOT NULL,
-                url VARCHAR(200) NOT NULL);`);
+                url VARCHAR(200) NOT NULL);`
+                );
                 
         console.log("Categories table has been created if it wasn't already there.");
-
-        await client.end();
-        this.isConnected = false;
-        this.updateCategories();
-        }
-
-    async updateCategories() {
-        // New SQL client environment 
-        // Database url
-        const client = new Client(process.env.DATABASE_URL);
         await client.connect();
         
         // Delete all records from table categories
@@ -55,12 +48,17 @@ module.exports = class StoreDBController {
         // End client connection with db
         await client.end();
         this.isConnected = false;
-    }
+    };
 
     async updateItems() {
         // New SQL client from environment 
         // Database url
-        const client = new Client(process.env.DATABASE_URL);
+        const client = new Client({
+            host: '127.0.0.1',
+            port: 1433,
+            user: 'sa',
+            password: 'DinosWithTacos4',
+        })
         await client.connect();
 
         const tScraper = new TargetScraper();

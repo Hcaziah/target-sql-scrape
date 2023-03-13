@@ -1,12 +1,13 @@
-const TargetScraper = require("./controllers/TargetScraper");
-const StoreDBController = require("./controllers/StoreDBController");
+const TargetScraper = require("./src/controllers/TargetScraper");
+const StoreDBController = require("./src/controllers/StoreDBController");
 
 const SDB = new StoreDBController();
 const TS = new TargetScraper();
 
 
 
-TS.getItems("5xt1n");
+// TS.getItems("5xt1n");
+SDB.updateCategories();
 
 // SDB.setupCategoriesTable();
 

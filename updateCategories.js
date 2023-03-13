@@ -1,4 +1,4 @@
-const StoreDBController = require("./controllers/StoreDBController");
+const StoreDBController = require("./src/controllers/StoreDBController");
 
 const dbcontroller = new StoreDBController();
 

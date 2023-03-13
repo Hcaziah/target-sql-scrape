@@ -45,3 +45,21 @@ ratings_count = obj.ratings_and_reviews.statistics.rating.count
 ratings =  obj.ratings_and_reviews.statistics.rating.average
 location = obj.price.location_id;  
 location = obj.price.location_id;
+
+
+JSON FORMAT
+====================================================================================================
+'title': product.item.product_description.title,
+'price': parseFloat(product.price.formatted_current_price.replace("$", "")),
+'images_url': product.item.enrichment.images.primary_image_url,
+'buy_url': product.item.enrichment.buy_url,
+'ratings': {
+    'average': parseFloat(product.ratings_and_reviews.statistics.rating.average),
+    'count': parseFloat(product.ratings_and_reviews.statistics.rating.count),
+},
+'descriptions': {
+    'item_categories': product.item.product_description.soft_bullets.bullets,
+    'bullet_descriptors': product.item.product_description.bullet_descriptions,
+},
+'dpci': product.item.dpci,
+'location': product.price.location_id,
