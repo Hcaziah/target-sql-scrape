@@ -4,7 +4,9 @@ const StoreDBController = require("./controllers/StoreDBController");
 const SDB = new StoreDBController();
 const TS = new TargetScraper();
 
-TS.getItems();
+
+
+TS.getItems("5xt1n");
 
 // SDB.setupCategoriesTable();
 

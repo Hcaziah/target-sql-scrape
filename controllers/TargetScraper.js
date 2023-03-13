@@ -22,7 +22,6 @@ module.exports = class TargetScraper {
 
         // Set east lansing client
         this.client = await this.page.target().createCDPSession();
-
         await this.client.send('Emulation.setGeolocationOverride', {
             accuracy: 100,
             latitude: this.geoLocation[0],
@@ -35,7 +34,7 @@ module.exports = class TargetScraper {
         console.log("Page Loaded");
     }
 
-    async getCategories() {
+    async getCategoryURLs() {
         await this.setup();
 
         // go to target page
@@ -55,12 +54,12 @@ module.exports = class TargetScraper {
         });
 
         // Get category urls
-        const categories = await this.page.evaluate(() =>
+        const categoryURLs = await this.page.evaluate(() =>
             Array.from(document.querySelectorAll("div[data-test='@web/CategoryMenu'] > div a")).map(a => a.href)
         );
 
-        if (categories.length > 0) {
-            console.log("Grabbed " + categories.length + " categories");
+        if (categoryURLs.length > 0) {
+            console.log("Grabbed " + categoryURLs.length + " categories");
         } else {
             throw new Error("No categories were grabbed, did the site load properly?");
         }
@@ -69,7 +68,7 @@ module.exports = class TargetScraper {
         await this.browser.close();
         console.log("Browser closed.");
 
-        return categories;
+        return categoryURLs;
     }
 
     async getItems(catCode, pageOffset = 0, maxRequestCount = 24 * 4) {
@@ -83,7 +82,7 @@ module.exports = class TargetScraper {
             // Get target item API page request
             await axios.get(url)
                 .then(response => {
-                    let products = response.data.data.search.products;;
+                    let products = response.data.data.search.products;
                     for (let product of products) {
                         itemArray.push({
                             'title': product.item.product_description.title,
@@ -103,12 +102,11 @@ module.exports = class TargetScraper {
                         });
                     }
                     console.log("Added " + products.length + " to the array.");
-                    itemArray.push();
                 })
                 .catch(error => {
                     if (error.code === "ERR_BAD_REQUEST") {
                         this.browser.close();
-                        throw new Error("Unable to add! Are API requests being blocked?");
+                        console.error(new Error("Unable to add! Are API requests being blocked?"));
                     } else {
                         console.error('Error:', error);
                     }
@@ -117,11 +115,11 @@ module.exports = class TargetScraper {
             pageOffset++;
             console.log(itemArray.length);
 
-            if (itemArray.length > 1000) {
-                console.log("done.")
+            if (itemArray.length > 200) {
+                console.log("Over 200 items added, ending.");
                 break;
             }
-            await sleep(5000);
+            await sleep(1000);
         }
         console.log(itemArray.length);
         var json = JSON.stringify(itemArray);
@@ -134,5 +132,7 @@ module.exports = class TargetScraper {
 
         await this.browser.close();
         console.log("Browser closed.");
+
+        return json;
     }
 }
