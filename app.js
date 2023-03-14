@@ -7,7 +7,7 @@ const TS = new TargetScraper();
 
 
 // TS.getItems("5xt1n");
-SDB.updateCategories();
+SDB.setupCategoriesTable();
 
 // SDB.setupCategoriesTable();
 

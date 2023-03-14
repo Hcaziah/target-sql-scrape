@@ -1,11 +1,5 @@
-const { Connection, Request } = require('tedious');
-const config = require('./privatestuff/config');
+const StoreDBController = require("./src/controllers/StoreDBController");
 
-var client = new Connection(config);
+const SDB = new StoreDBController();
 
-client.on('connect', function(err) {
-  if(err) throw err;
-  console.log("SQL Client Connected");
-})
-
-client.connect();
+SDB.setupCategoriesTable();
