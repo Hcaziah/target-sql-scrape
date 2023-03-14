@@ -2,7 +2,8 @@ const { Connection, Request, TYPES } = require('tedious');
 
 const config = require('./config');
 
-var connection = new Connection(config);  
+var connection = new Connection(config); 
+
 
 
 function insertCategories(categoryArray) {
@@ -12,13 +13,12 @@ function insertCategories(categoryArray) {
   });
 
   bulkLoad.addColumn('ID', TYPES.Int, { nullable: false });
-  bulkLoad.addColumn('lastupdate', TYPES.SmallDateTime, { nullable: false });
-  bulkLoad.addColumn('category', TYPES.VarChar, { nullable: false });
-  bulkLoad.addColumn('url', TYPES.VarChar, { nullable: false });
-  bulkLoad.addColumn('code', TYPES.VarChar, { nullable: false });
+  bulkLoad.addColumn('category', TYPES.VarChar, { length: 50, nullable: false });
+  bulkLoad.addColumn('url', TYPES.VarChar, { length: 200, nullable: false });
+  bulkLoad.addColumn('code', TYPES.VarChar, { length: 10, nullable: false });
 
   // bulkLoad.addRow({
-  //   ID: categoryArray['id'],
+  //   ID: categoryArray['id'],s
   //   category: categoryArray['name'],
   //   url: categoryArray['url'],
   //   code: categoryArray['code']

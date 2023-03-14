@@ -1,4 +1,4 @@
-const { insertCategories } = require("../sql/sqlClient");
+const { insertCategories } = require("../sql/sqlclient");
 
 const TargetScraper = require("./TargetScraper");
 
