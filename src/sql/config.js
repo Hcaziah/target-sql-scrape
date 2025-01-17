@@ -4,7 +4,7 @@ module.exports = sql_login = {
         type: 'default',
         options: {
         userName: 'sa',
-        password: 'DinosWithTacos4',
+        password: '**',
         }
     },
     options: {
