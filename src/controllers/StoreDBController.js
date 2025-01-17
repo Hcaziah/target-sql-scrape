@@ -37,7 +37,7 @@ module.exports = class StoreDBController {
             host: '127.0.0.1',
             port: 1433,
             user: 'sa',
-            password: 'DinosWithTacos4',
+            password: '**',
         })
         await client.connect();
 
